@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="id">
+<meta charset='UTF-8' />
+<meta content='width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5' name='viewport' />
+
+<head>
+  <title>Untuk Endah 💌</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Nunito:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+  <style>
+    :root {
+      --pink: #ff6b9d;
+      --rose: #ff3d7f;
+      --soft: #ffe4f0;
+      --white: #fff;
+      --purple: #c084fc;
+      --deep: #7c3aed;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1a0533 0%, #3b0764 40%, #6b21a8 80%, #1a0533 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+      font-family: 'Nunito', sans-serif;
+      overflow-x: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ====== FLOATING PARTICLES ====== */
+    .particles {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      font-size: 1.2rem;
+      animation: floatUp linear infinite;
+      opacity: 0;
+    }
+
+    @keyframes floatUp {
+      0%   { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+      10%  { opacity: 1; }
+      90%  { opacity: 0.8; }
+      100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* ====== TWINKLING STARS ====== */
+    .stars {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .star {
+      position: absolute;
+      width: 3px; height: 3px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle ease-in-out infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+
+    /* ====== MAIN CONTAINER ====== */
+    #main {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    /* ====== NAMA ENDAH ====== */
+    #nama-endah {
+      font-family: 'Dancing Script', cursive;
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      color: transparent;
+      background: linear-gradient(90deg, #ff6b9d, #c084fc, #ff6b9d);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: shimmerText 3s linear infinite, fadeInDown 1s ease both;
+      text-shadow: none;
+      filter: drop-shadow(0 0 20px rgba(255,107,157,0.7));
+      margin-bottom: 8px;
+      text-align: center;
+    }
+
+    @keyframes shimmerText {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    #subtitle {
+      font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      animation: fadeInDown 1.2s ease 0.3s both;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    /* ====== ENVELOPE CARD ====== */
+    #envelope-wrapper {
+      animation: fadeInUp 1s ease 0.6s both;
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    #envelope-btn {
+      background: linear-gradient(135deg, #ff6b9d, #c084fc);
+      border: none;
+      border-radius: 20px;
+      padding: 18px 40px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 32px rgba(255, 107, 157, 0.5), 0 0 60px rgba(192, 132, 252, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 8px 32px rgba(255,107,157,0.5), 0 0 60px rgba(192,132,252,0.3); }
+      50% { box-shadow: 0 8px 40px rgba(255,107,157,0.8), 0 0 80px rgba(192,132,252,0.6); }
+    }
+
+    #envelope-btn:hover {
+      transform: scale(1.05) translateY(-4px);
+    }
+
+    #envelope-btn:active {
+      transform: scale(0.97);
+    }
+
+    #envelope-icon {
+      font-size: 3.5rem;
+      animation: wiggle 2s ease-in-out infinite;
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      20% { transform: rotate(-8deg); }
+      40% { transform: rotate(8deg); }
+      60% { transform: rotate(-4deg); }
+      80% { transform: rotate(4deg); }
+    }
+
+    #envelope-btn span {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.4rem;
+      color: white;
+      font-weight: 700;
+    }
+
+    /* ====== LETTER CONTENT ====== */
+    #letter-container {
+      display: none;
+      animation: fadeInUp 0.8s ease both;
+      width: 100%;
+      max-width: 480px;
+    }
+
+    #letter-card {
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 24px;
+      padding: 28px 24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+    }
+
+    #letter-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #letter-header .greeting {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      color: #ff6b9d;
+      display: block;
+      animation: fadeInDown 0.5s ease both;
+    }
+
+    /* ====== TYPING TEXT ====== */
+    #letter-body {
+      color: rgba(255,255,255,0.92);
+      font-size: clamp(0.9rem, 2.5vw, 1rem);
+      line-height: 1.85;
+      min-height: 200px;
+    }
+
+    #letter-body .highlight {
+      color: #ff6b9d;
+      font-weight: 700;
+    }
+
+    #letter-body .highlight-purple {
+      color: #c084fc;
+      font-weight: 700;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: #ff6b9d;
+      margin-left: 2px;
+      vertical-align: middle;
+      animation: blink 0.7s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* ====== HEART STICKERS ====== */
+    .stiker-row {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .stiker-gif {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      animation: bounce 1.5s ease-in-out infinite;
+      border: 2px solid rgba(255,107,157,0.4);
+    }
+
+    .stiker-gif:nth-child(2) { animation-delay: 0.2s; }
+    .stiker-gif:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* ====== REPLY BUTTON ====== */
+    #btn-balas {
+      display: none;
+      margin: 20px auto 0;
+      background: linear-gradient(135deg, #ff6b9d, #c084fc);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 14px 36px;
+      font-size: 1rem;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 1px;
+      box-shadow: 0 6px 24px rgba(255,107,157,0.45);
+      transition: transform 0.2s, box-shadow 0.2s;
+      animation: fadeInUp 0.6s ease both;
+    }
+
+    #btn-balas:hover {
+      transform: translateY(-3px) scale(1.04);
+      box-shadow: 0 10px 32px rgba(255,107,157,0.6);
+    }
+
+    /* ====== PENUTUP ====== */
+    #closing {
+      text-align: center;
+      margin-top: 16px;
+      display: none;
+      animation: fadeInUp 0.6s ease both;
+    }
+
+    #closing .love-text {
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.6rem;
+      color: #ff6b9d;
+    }
+
+    /* ====== CONFETTI ====== */
+    .confetti-piece {
+      position: fixed;
+      width: 10px; height: 10px;
+      top: -20px;
+      border-radius: 2px;
+      animation: confettiFall linear forwards;
+      z-index: 100;
+      pointer-events: none;
+    }
+
+    @keyframes confettiFall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(720deg); opacity: 0.3; }
+    }
+
+    /* ====== SWAL CUSTOM ====== */
+    .swal2-popup {
+      border-radius: 20px !important;
+      background: linear-gradient(135deg, #2d0050, #4a0080) !important;
+      border: 1px solid rgba(255,107,157,0.3) !important;
+    }
+
+    .swal2-title {
+      color: white !important;
+      font-family: 'Nunito', sans-serif !important;
+      font-size: 1.2rem !important;
+    }
+
+    .swal2-confirm {
+      background: linear-gradient(135deg, #ff6b9d, #c084fc) !important;
+      border-radius: 50px !important;
+      font-family: 'Nunito', sans-serif !important;
+      font-weight: 700 !important;
+    }
+
+    .swal2-image {
+      border-radius: 16px !important;
+    }
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width: 480px) {
+      #letter-card { padding: 20px 16px; }
+      .stiker-gif { width: 48px; height: 48px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Bintang-bintang -->
+  <div class="stars" id="stars"></div>
+
+  <!-- Partikel hati melayang -->
+  <div class="particles" id="particles"></div>
+
+  <div id="main">
+
+    <!-- Nama Endah -->
+    <div id="nama-endah">✨ Endah ✨</div>
+    <div id="subtitle">— sebuah surat kecil untukmu —</div>
+
+    <!-- Tombol Amplop -->
+    <div id="envelope-wrapper">
+      <button id="envelope-btn" onclick="bukaAmplopnya()">
+        <span id="envelope-icon">💌</span>
+        <span>Buka Suratnya!</span>
+      </button>
+    </div>
+
+    <!-- Isi Surat -->
+    <div id="letter-container">
+      <div id="letter-card">
+        <div id="letter-header">
+          <span class="greeting">Untuk Endah yang aku sayangi 🌸</span>
+        </div>
+
+        <div class="stiker-row">
+          <img class="stiker-gif" src="https://feeldreams.github.io/pusn.gif" alt="">
+          <img class="stiker-gif" src="https://feeldreams.github.io/wortel.gif" alt="">
+          <img class="stiker-gif" src="https://feeldreams.github.io/mndkat.gif" alt="">
+        </div>
+
+        <div id="letter-body">
+          <span id="typed-text"></span><span class="cursor" id="cursor"></span>
+        </div>
+
+        <div id="closing">
+          <br>
+          <span class="love-text">I Love You, Endah 🌹💜</span>
+        </div>
+
+        <div style="text-align:center;">
+          <button id="btn-balas" onclick="kirimBalas()">💌 Balas Suratnya</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // ====== BINTANG ======
+    const starsEl = document.getElementById('stars');
+    for (let i = 0; i < 80; i++) {
+      const s = document.createElement('div');
+      s.className = 'star';
+      s.style.cssText = `
+        left: ${Math.random()*100}%;
+        top: ${Math.random()*100}%;
+        animation-duration: ${2 + Math.random()*4}s;
+        animation-delay: ${Math.random()*4}s;
+        width: ${1 + Math.random()*3}px;
+        height: ${1 + Math.random()*3}px;
+      `;
+      starsEl.appendChild(s);
+    }
+
+    // ====== PARTIKEL HATI ======
+    const emojis = ['💕','✨','🌸','💜','🩷','⭐','💫','🌷','💝','🎀'];
+    const particlesEl = document.getElementById('particles');
+    for (let i = 0; i < 20; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+      p.style.cssText = `
+        left: ${Math.random()*100}%;
+        animation-duration: ${8 + Math.random()*10}s;
+        animation-delay: ${Math.random()*8}s;
+        font-size: ${0.8 + Math.random()*1.2}rem;
+      `;
+      particlesEl.appendChild(p);
+    }
+
+    // ====== PESAN PANJANG ======
+    const pesanLengkap = `Hai, Endah...
+
+Aku nggak tau harus mulai dari mana, karena rasanya kata-kata selalu terlalu kecil untuk mewakili apa yang aku rasain.
+
+Tapi aku mau bilang... maaf, Endah. Maaf yang sebesar-besarnya, yang paling dalam dari hati aku yang paling dalam.
+
+Maaf karena aku belum bisa jadi orang yang kamu impikan. Maaf karena aku sering nggak peka sama apa yang kamu butuhkan, padahal kamu sudah sangat banyak bersabar sama aku.
+
+Maaf karena aku masih banyak salah. Masih suka bikin kamu kesal, bikin kamu nunggu, bikin kamu ngerasa sendiri di saat-saat yang harusnya aku ada buat kamu.
+
+Aku sadar, aku masih jauh dari sempurna. Masih ada banyak hal yang aku kurang ngerti tentang caramu ingin dicintai. Tapi percaya deh, aku selalu berusaha — walau kadang usahaku nggak keliatan, walau kadang aku gagal.
+
+Kamu terlalu berharga, Endah. Dan aku nggak mau kehilangan kamu karena aku nggak berani minta maaf.
+
+Jadi... maaf ya. Maaf buat semua yang pernah bikin kamu nangis diem-diem. Maaf buat semua momen yang harusnya jadi kenangan indah tapi malah jadi luka. Maaf udah bikin kamu ngerasa nggak cukup, padahal justru akulah yang nggak cukup layak buat orang sebaik kamu.
+
+Aku sayang kamu, Endah. Beneran. Dan aku janji akan terus belajar, terus berubah jadi lebih baik — bukan karena aku takut kehilangan kamu, tapi karena kamu layak dapet yang terbaik. Dan aku mau jadi itu.`;
+
+    // ====== BUKA AMPLOP ======
+    async function bukaAmplopnya() {
+      document.getElementById('envelope-wrapper').style.display = 'none';
+
+      // Popup berurutan
+      const stiker1 = 'https://feeldreams.github.io/pusn.gif';
+      const stiker2 = 'https://feeldreams.github.io/wortel.gif';
+      const stiker3 = 'https://feeldreams.github.io/mndkat.gif';
+      const stiker4 = 'https://feeldreams.github.io/ngumpet.gif';
+
+      const swalStyle = {
+        background: 'linear-gradient(135deg, #2d0050, #4a0080)',
+        color: 'white',
+        confirmButtonColor: '#ff6b9d',
+        confirmButtonText: 'Lanjut 💜',
+        customClass: {
+          popup: 'swal-custom-popup',
+          title: 'swal-custom-title',
+          confirmButton: 'swal-confirm-btn'
+        }
+      };
+
+      await Swal.fire({ ...swalStyle, title: 'Hii Endahh!! 😍💜', imageUrl: stiker1, imageWidth: 100, imageHeight: 100 });
+      await Swal.fire({ ...swalStyle, title: 'Ada yang pengen aku bilang<br>ke kamu, Endah... 🫠', imageUrl: stiker2, imageWidth: 100, imageHeight: 100 });
+      await Swal.fire({ ...swalStyle, title: 'Aku udah lama nahan ini<br>di dalam hati 🫶', imageUrl: stiker3, imageWidth: 100, imageHeight: 100 });
+      await Swal.fire({ ...swalStyle, title: 'Makanya aku kirim<br>surat ini buat kamu ✉️', imageUrl: stiker4, imageWidth: 100, imageHeight: 100 });
+
+      // Tampilkan surat
+      const letterContainer = document.getElementById('letter-container');
+      letterContainer.style.display = 'block';
+      setTimeout(() => ketikTeks(), 300);
+    }
+
+    // ====== TYPING EFFECT ======
+    function ketikTeks() {
+      const el = document.getElementById('typed-text');
+      const cursor = document.getElementById('cursor');
+      let i = 0;
+      let html = '';
+
+      // Baris per baris dengan highlight
+      const lines = pesanLengkap.split('\n');
+      const processedLines = [];
+
+      lines.forEach(line => {
+        let processed = line
+          .replace(/Endah/g, `<span class="highlight">Endah</span>`)
+          .replace(/maaf/gi, `<span class="highlight">maaf</span>`)
+          .replace(/Maaf/g, `<span class="highlight">Maaf</span>`)
+          .replace(/sayang/gi, `<span class="highlight-purple">sayang</span>`)
+          .replace(/I Love You/gi, `<span class="highlight-purple">I Love You</span>`);
+        processedLines.push(processed);
+      });
+
+      const fullHTML = processedLines.join('<br>');
+
+      // Ketik karakter per karakter (plain text dulu, lalu replace)
+      const plainText = pesanLengkap;
+      const speed = 28;
+
+      function typeChar() {
+        if (i < plainText.length) {
+          // Build partial
+          const partial = plainText.substring(0, i + 1);
+          let display = partial
+            .replace(/Endah/g, `<span class="highlight">Endah</span>`)
+            .replace(/maaf/gi, `<span class="highlight">maaf</span>`)
+            .replace(/Maaf/g, `<span class="highlight">Maaf</span>`)
+            .replace(/sayang/gi, `<span class="highlight-purple">sayang</span>`)
+            .replace(/I Love You/gi, `<span class="highlight-purple">I Love You</span>`)
+            .replace(/\n/g, '<br>');
+          el.innerHTML = display;
+          i++;
+
+          // Auto scroll
+          el.scrollIntoView({ behavior: 'smooth', block: 'end' });
+
+          const delay = plainText[i-1] === '.' || plainText[i-1] === ',' ? speed * 5 :
+                        plainText[i-1] === '\n' ? speed * 3 : speed;
+          setTimeout(typeChar, delay);
+        } else {
+          // Selesai
+          cursor.style.display = 'none';
+          setTimeout(() => {
+            document.getElementById('closing').style.display = 'block';
+            document.getElementById('btn-balas').style.display = 'inline-block';
+            launchConfetti();
+          }, 600);
+        }
+      }
+
+      typeChar();
+    }
+
+    // ====== CONFETTI ======
+    function launchConfetti() {
+      const colors = ['#ff6b9d','#c084fc','#fbbf24','#34d399','#60a5fa','#f9a8d4'];
+      for (let i = 0; i < 60; i++) {
+        setTimeout(() => {
+          const c = document.createElement('div');
+          c.className = 'confetti-piece';
+          c.style.cssText = `
+            left: ${Math.random()*100}vw;
+            background: ${colors[Math.floor(Math.random()*colors.length)]};
+            width: ${6 + Math.random()*8}px;
+            height: ${6 + Math.random()*8}px;
+            border-radius: ${Math.random()>0.5 ? '50%' : '2px'};
+            animation-duration: ${2 + Math.random()*2}s;
+          `;
+          document.body.appendChild(c);
+          setTimeout(() => c.remove(), 4000);
+        }, i * 60);
+      }
+    }
+
+    // ====== BALAS ======
+    function kirimBalas() {
+      Swal.fire({
+        background: 'linear-gradient(135deg, #2d0050, #4a0080)',
+        color: 'white',
+        title: '💌 Kirim Balasan ke Endah',
+        input: 'textarea',
+        inputPlaceholder: 'Tulis balasanmu di sini, Endah...',
+        inputAttributes: { style: 'background: rgba(255,255,255,0.1); color: white; border: 1px solid #ff6b9d; border-radius: 12px; font-family: Nunito;' },
+        confirmButtonText: 'Kirim 💜',
+        confirmButtonColor: '#ff6b9d',
+        showCancelButton: true,
+        cancelButtonText: 'Nanti dulu',
+        cancelButtonColor: 'rgba(255,255,255,0.2)',
+      }).then(result => {
+        if (result.isConfirmed && result.value) {
+          Swal.fire({
+            background: 'linear-gradient(135deg, #2d0050, #4a0080)',
+            color: 'white',
+            title: 'Makasih ya Endah 🥰',
+            text: 'Pesan kamu udah aku terima di hati aku 💜',
+            icon: 'success',
+            iconColor: '#ff6b9d',
+            confirmButtonText: 'Hehe 🩷',
+            confirmButtonColor: '#ff6b9d',
+          });
+          launchConfetti();
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
